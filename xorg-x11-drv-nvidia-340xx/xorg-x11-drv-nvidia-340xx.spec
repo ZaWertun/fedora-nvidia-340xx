@@ -7,8 +7,8 @@
 
 Name:            xorg-x11-drv-nvidia-340xx
 Epoch:           1
-Version:         340.107
-Release:         6%{?dist}
+Version:         340.108
+Release:         1%{?dist}
 Summary:         NVIDIA's 340xx series proprietary display driver for NVIDIA graphic cards
 
 Group:           User Interface/X Hardware Support
@@ -518,6 +518,9 @@ fi ||:
 
 
 %changelog
+* Wed Dec 25 2019 Yaroslav Sidlovsky <zawertun@gmail.com> - 1:340.108-1
+- version 340.108
+
 * Sun Sep 22 2019 Leigh Scott <leigh123linux@gmail.com> - 1:340.107-6
 - Fix conflict with rpmfusion-nonfree-obsolete-packages
 
