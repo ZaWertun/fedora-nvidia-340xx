@@ -10,7 +10,7 @@ Name:          nvidia-340xx-kmod
 Epoch:         1
 Version:       340.108
 # Taken over by kmodtool
-Release:       1%{?dist}
+Release:       5%{?dist}
 Summary:       NVIDIA display driver kernel module
 Group:         System Environment/Kernel
 License:       Redistributable, no modification permitted
@@ -18,13 +18,9 @@ URL:           http://www.nvidia.com/
 
 Source11:      nvidia-kmodtool-excludekernel-filterfile
 Patch0:        nv-linux-arm.patch
-Patch1:        xf86-video-nvidia-legacy_340.108.patch
+Patch1:        kernel-5.7.patch
 
-%if 0%{?fedora} > 30
-ExclusiveArch:  x86_64
-%else
 ExclusiveArch:  i686 x86_64
-%endif
 
 # get the needed BuildRequires (in parts depending on what we build for)
 %global AkmodsBuildRequires %{_bindir}/kmodtool, xorg-x11-drv-nvidia-340xx-kmodsrc >= %{epoch}:%{version}
@@ -77,14 +73,26 @@ done
 %{?akmod_install}
 
 %changelog
-* Wed Dec 25 2019 Yaroslav Sidlovsky <zawertun@gmail.com> - 1:340.108-1
-- version 340.108
+* Thu Jul 02 2020 Yaroslav Sidlovsky <zawertun@otl.ru> - 1:340.108-5
+- patch for kernel-5.7.0
 
-* Fri Nov 29 2019 Yaroslav Sidlovsky <zawertun@gmail.com> - 1:340.107-12
-- release 12
+* Wed Jun 03 2020 Yaroslav Sidlovsky <zawertun@otl.ru> - 1:340.108-4
+- added kmem_cache_create_usercopy.patch
 
-* Tue Nov 19 2019 Yaroslav Sidlovsky <zawertun@gmail.com> - 1:340.107-11
-- patch for kernel-5.3
+* Wed Apr 29 2020 Leigh Scott <leigh123linux@gmail.com> - 1:340.108-3
+- patch for kernel-5.6.0
+
+* Wed Feb 05 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1:340.108-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
+* Mon Dec 23 2019 Leigh Scott <leigh123linux@gmail.com> - 1:340.108-1
+- Update to 340.108
+
+* Fri Dec 20 2019 Leigh Scott <leigh123linux@gmail.com> - 1:340.107-12
+- patch for kernel-5.4.0
+
+* Sun Nov 24 2019 João Carlos Mendes Luís <redhat@jonny.eng.br> - 1:340.107-11
+- patch for kernel-5.3.0
 
 * Thu Aug 29 2019 Leigh Scott <leigh123linux@googlemail.com> - 1:340.107-10
 - Exclude i686 for F31+
